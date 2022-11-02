@@ -25,7 +25,6 @@ function App() {
             padding: "2rem 0",
           }}
         >
-          I am using Quill Editor
           <RichTextEditorQuill initialValue="" getValue={getValue} />
         </Box>
         <Box sx={{ p: 2, bgcolor: "grey.300" }}>
