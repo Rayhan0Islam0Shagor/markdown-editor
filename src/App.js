@@ -8,33 +8,39 @@ function App() {
   const editor = React.useRef(null);
   const [content, setContent] = React.useState("");
 
-  const config = {
-    readonly: false,
-    toolbarButtonSize: "small",
-    toolbarSticky: false,
-    toolbar: true,
-    buttons: [
-      "bold",
-      "italic",
-      "underline",
-      "strikethrough",
-      "|",
-      "ul",
-      "ol",
-      "|",
-      "outdent",
-      "indent",
-      "|",
-      "font",
-      "fontsize",
-      "brush",
-      "paragraph",
-      "|",
-      "align",
-      "undo",
-      "redo",
-    ],
-  };
+  const editorConfig = React.useMemo(
+    () => ({
+      readonly: false,
+      toolbarSticky: false,
+      toolbarButtonSize: "small",
+      toolbar: true,
+      buttons: [
+        "bold",
+        "italic",
+        "underline",
+        "strikethrough",
+        "|",
+        "ul",
+        "ol",
+        "|",
+        "outdent",
+        "indent",
+        "|",
+        "font",
+        "fontsize",
+        "brush",
+        "paragraph",
+        "|",
+        "align",
+        "undo",
+        "redo",
+      ],
+      uploader: {
+        url: "https://xdsoft.net/jodit/connector/index.php?action=fileUpload",
+      },
+    }),
+    []
+  );
 
   return (
     <Box
@@ -47,7 +53,7 @@ function App() {
           ref={editor}
           value={content}
           onChange={(newContent) => setContent(newContent)}
-          config={config}
+          config={editorConfig}
         />
 
         <Box sx={{ p: 2, bgcolor: "grey.300" }}>
