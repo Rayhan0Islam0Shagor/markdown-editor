@@ -3,19 +3,17 @@ import "./App.css";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import RichTextEditorQuill from "./Components/RichTextEditorQuill";
-
 import TurndownService from "turndown";
-import Preview from "./Components/Preview";
+import MarkDownEditor from "./Components/RMEditor";
 
 function App() {
-  const [value, setValue] = React.useState("");
-  const getValue = (value) => {
-    setValue(value);
-  };
+  const [value, setValue] = React.useState({
+    text: "",
+    html: "",
+  });
 
   const turndownService = new TurndownService();
-  const markdown = turndownService.turndown(value);
+  const markdown = turndownService.turndown(value.html);
 
   const downloadAsMdFile = () => {
     const element = document.createElement("a");
@@ -40,7 +38,7 @@ function App() {
             position: "relative",
           }}
         >
-          <RichTextEditorQuill initialValue="" getValue={getValue} />
+          <MarkDownEditor setValue={setValue} />
           <Button
             sx={{
               position: "absolute",
@@ -57,8 +55,6 @@ function App() {
             Save
           </Button>
         </Box>
-
-        <Preview markdown={markdown} value={value} />
       </Container>
     </Box>
   );
