@@ -7,7 +7,6 @@ const modules = {
     [{ list: "ordered" }, { list: "bullet" }, "blockquote"],
     [{ indent: "-1" }, { indent: "+1" }],
     [{ header: [1, 2, 3, 4, 5, 6, false] }],
-    [{ align: [] }],
   ],
 };
 
