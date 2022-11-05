@@ -52,6 +52,7 @@ function App() {
             variant="contained"
             size="small"
             onClick={downloadAsMdFile}
+            disabled={markdown.trim() === ""}
           >
             Save
           </Button>
